@@ -1,7 +1,8 @@
 import os
 import json
-
 import utils
+import logging
+
 from pathlib import Path
 
 # Directory
@@ -56,3 +57,4 @@ def write_data_in_file(data, file_name, target_path=""):
             openfile.write(json_object)
         else:
             pass
+    print("Contents copied succesfully!")
