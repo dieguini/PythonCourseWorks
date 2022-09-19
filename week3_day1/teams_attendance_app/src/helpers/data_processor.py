@@ -1,0 +1,3 @@
+"""
+    Filters in-memory meetings data and uses meeting_name, star_date, end_date, etc...
+"""
