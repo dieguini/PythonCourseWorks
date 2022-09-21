@@ -11,8 +11,8 @@ RUN pip3 install --no-cache-dir --upgrade -r /attendance_app/requirements.txt
 COPY ./attendace_reports/ /attendance_app/attendace_reports
 COPY ./src /attendance_app/src
 COPY ./tests /attendance_app/tests
-COPY ./README.md .
+COPY ./Readme.md .
 
-CMD [ "pip3" , "./src/main.py" ]
+CMD [ "python" , "./src/main.py" ]
 
 ## TODO: Teams Attendance docker image definition, it must allow to run src.main.py

@@ -1,7 +1,7 @@
 ## app entry point
 
-import imp
-from helpers.csv_processor import reads_attendance_reports
+from helpers.data_processor import reads_attendance_reports
+from helpers.dates_helper import string_to_date
 
 def is_valid_option(selected_option):
     """
@@ -54,13 +54,17 @@ def process_question_options():
     
     meeting_name = input('Enter meeting name: ')
     # TODO make mask input on date
-    start_date = input('Enter a start date in YYYY-MM-DD format: ')
-    end_date = input('Enter a end date in YYYY-MM-DD format: ')
+    start_date_input = input('Enter a start date in YYYY-MM-DD format: ')
+
+    # TODO Validates dates before reading attendance report
+    end_date_input = input('Enter a end date in YYYY-MM-DD format: ')
+
+    #start_date = string_to_date(start_date, format_date='%Y-%m-%d')
 
     arguments = {
         'meeting_name': meeting_name,
-        'start_date': start_date,
-        'end_date': end_date
+        'start_date': start_date_input,
+        'end_date': end_date_input
     }
     return arguments
 
