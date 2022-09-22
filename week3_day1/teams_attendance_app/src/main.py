@@ -1,7 +1,7 @@
 ## app entry point
 
 from helpers.data_processor import reads_attendance_reports
-from helpers.dates_helper import string_to_date
+from helpers.dates_helper import enter_new_dates, string_to_date, validation_date
 
 def is_valid_option(selected_option):
     """
@@ -53,13 +53,15 @@ def process_question_options():
     ## drive "input" aquisition while not Quit
     
     meeting_name = input('Enter meeting name: ')
-    # TODO make mask input on date
-    start_date_input = input('Enter a start date in YYYY-MM-DD format: ')
+
+    start_date_input, end_date_input = enter_new_dates()
+    start_date = string_to_date(start_date_input, format_date='%Y-%m-%d')
+    end_date = string_to_date(end_date_input, format_date='%Y-%m-%d')
 
     # TODO Validates dates before reading attendance report
-    end_date_input = input('Enter a end date in YYYY-MM-DD format: ')
-
-    #start_date = string_to_date(start_date, format_date='%Y-%m-%d')
+    while not validation_date(start_date, end_date):
+        print("\nStart date can't be superior to end date\n")
+        start_date, end_date = enter_new_dates()
 
     arguments = {
         'meeting_name': meeting_name,
