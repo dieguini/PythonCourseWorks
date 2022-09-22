@@ -40,8 +40,6 @@ def returns_json_attendance_reports(
     
     # Just list that matches
     data = []
-    key='another'
-    key_variable = 'another2'
     for search in list_search_range:
         path_sub_folder = os.path.join(ATTENDANCE_REPORT_FOLDER_NAME, search)
         string_date = dates_helper.date_format(search)
