@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
+import string
 
-def list_date_range(start_date, end_date, format_date="%m%d%Y"):
+def list_date_range(start_date:datetime, end_date:datetime, format_date="%m%d%Y"):
     """
         Devuelve una lista en el rango de fechas indicado
             Input start_date = type(datetime)
@@ -34,9 +35,9 @@ def validation_date(start_date:datetime, end_date:datetime):
         return False
     return True
 
-def enter_date_format(input_date, format="%Y-%m-%d"):
+def enter_date_format(input_date, format_date="%Y-%m-%d"):
     try:
-        transaction_date = datetime.datetime.strptime(input_date, "%Y-%m-%d")
+        transaction_date = datetime.datetime.strptime(input_date, format_date)
     except ValueError:
         print("Incorrect format. Format [YYYY-MM-DD]!\n")
         return enter_date_format()

@@ -3,6 +3,7 @@
 """
 import logging
 import os
+import string
 from helpers import dates_helper
 from helpers import json_processor
 from helpers.csv_processor import read_line, replace_csv
@@ -15,7 +16,12 @@ def is_valid_path(path):
 
     return False
 
-def reads_attendance_reports(meeting_name,start_date, end_date, option):
+def returns_json_attendance_reports(
+    meeting_name:string,
+    start_date:string, 
+    end_date:string,
+    option:string
+    ):
     """
         Option=1 => Number of participants
         Option=2 => Duration of meeting
@@ -30,13 +36,12 @@ def reads_attendance_reports(meeting_name,start_date, end_date, option):
     start_date = dates_helper.string_to_date(start_date)
     end_date = dates_helper.string_to_date(end_date)
     
-    print('start_date_start_date: ',start_date)
-
     list_search_range = dates_helper.list_date_range(start_date, end_date)
     
     # Just list that matches
     data = []
-
+    key='another'
+    key_variable = 'another2'
     for search in list_search_range:
         path_sub_folder = os.path.join(ATTENDANCE_REPORT_FOLDER_NAME, search)
         string_date = dates_helper.date_format(search)
@@ -96,6 +101,4 @@ def reads_attendance_reports(meeting_name,start_date, end_date, option):
             dictionary_format = json_processor.generate_dict(string_date, key, key_variable)
             data.append(dictionary_format)
         
-    json_data = json_processor.generate_json(meeting_name.title(), data)
-    json_processor.print_json(json_data)
-    json_processor.writes_json_file(json_data)
+    return json_processor.generate_json(meeting_name.title(), data)

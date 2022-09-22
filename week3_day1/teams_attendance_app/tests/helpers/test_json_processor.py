@@ -72,3 +72,16 @@ def test_generate_json_error_data_different_data_false():
 
     response = generate_json(string_meeting_title, data)
     assert response != expected_response, "Expected response are json objects different in data?"
+
+def test_generate_dict_false():
+    string_date='9/13/2022'
+    key='duration'
+    key_variable='0h 0m'
+    
+    not_expected_result = {
+        "date": "0/0/0",
+        'another': 'value'
+    }
+
+    result = generate_dict(string_date, key, key_variable)
+    assert result != not_expected_result, "Expected response dictoinary objects not equal?"

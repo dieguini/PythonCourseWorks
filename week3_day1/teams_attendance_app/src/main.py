@@ -1,7 +1,8 @@
 ## app entry point
 
-from helpers.data_processor import reads_attendance_reports
+from helpers.data_processor import returns_json_attendance_reports
 from helpers.dates_helper import enter_new_dates, string_to_date, validation_date
+from helpers.json_processor import print_json, writes_json_file
 
 def is_valid_option(selected_option):
     """
@@ -83,11 +84,13 @@ def main():
 
     arguments =  process_question_options()
 
-    reads_attendance_reports(
+    json_data = returns_json_attendance_reports(
         arguments.get('meeting_name'), 
         arguments.get('start_date'), 
         arguments.get('end_date'),
         option
     )
+    print_json(json_data)
+    writes_json_file(json_data)
 
 main()
