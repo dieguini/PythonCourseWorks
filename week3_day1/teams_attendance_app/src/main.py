@@ -1,5 +1,5 @@
-## app entry point
-
+## App entry point
+from helpers.args_processor import args_processor
 from helpers.data_processor import returns_json_attendance_reports
 from helpers.dates_helper import enter_new_dates, string_to_date, validation_date
 from helpers.json_processor import print_json, writes_json_file
@@ -49,6 +49,7 @@ def process_questions():
 
     return selected_option
 
+#TODO if no params then interactive
 def process_question_options():
     ## display input to request meeting name, end and start date
     ## drive "input" aquisition while not Quit
@@ -79,10 +80,20 @@ def welcome():
 def main():
     welcome()
 
-    option  = process_questions()
+    args = args_processor()
+
+    if all(args.values()):
+        option  = args.get('option')
+        arguments = args
+    else:
+        option  = process_questions()
+        arguments =  process_question_options()
+    
     print('Option selected: ',option)
 
-    arguments =  process_question_options()
+    if option == 'q':
+        print("Bye bye!") 
+        return
 
     json_data = returns_json_attendance_reports(
         arguments.get('meeting_name'), 
