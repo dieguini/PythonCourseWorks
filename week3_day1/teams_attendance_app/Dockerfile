@@ -1,16 +1,17 @@
-FROM python:3.9
+FROM python:3.9.15-slim
 LABEL version="1.0"
 
 WORKDIR /attendance_app
 
-COPY ./requirements.txt /attendance_app/requirements.txt
+COPY ./requirements.txt ./requirements.txt
 
-RUN pip3 install --no-cache-dir --upgrade -r /attendance_app/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 # Copying folders and application files
-COPY ./attendace_reports/ /attendance_app/attendace_reports
-COPY ./src /attendance_app/src
+# COPY ["./tests", "./src", "./attendace_reports", "./"]
 COPY ./tests /attendance_app/tests
+COPY ./src /attendance_app/src
+COPY ./attendace_reports/ /attendance_app/attendace_reports
 COPY ./Readme.md .
 
 CMD [ "python" , "./src/main.py" ]
