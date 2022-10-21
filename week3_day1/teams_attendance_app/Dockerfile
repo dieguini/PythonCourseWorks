@@ -1,5 +1,5 @@
 FROM python:alpine3.16
-LABEL version="1.1.0"
+LABEL version="1.2.0"
 
 WORKDIR /attendance_app
 
@@ -14,6 +14,6 @@ COPY ./src /attendance_app/src
 COPY ./attendace_reports/ /attendance_app/attendace_reports
 COPY ./Readme.md .
 
-CMD [ "python" , "./src/main.py" ]
+ENTRYPOINT [ "python" , "./src/main.py" ]
 
 ## TODO: Teams Attendance docker image definition, it must allow to run src.main.py
