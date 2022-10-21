@@ -1,5 +1,5 @@
-FROM python:3.9.15-slim
-LABEL version="1.0"
+FROM python:alpine3.16
+LABEL version="1.1.0"
 
 WORKDIR /attendance_app
 
