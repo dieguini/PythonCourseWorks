@@ -87,4 +87,5 @@ def test_generate_dict_false():
     }
 
     result = generate_dict(string_date, key, key_variable)
+
     assert result != not_expected_result, "Expected response dictoinary objects not equal?"
