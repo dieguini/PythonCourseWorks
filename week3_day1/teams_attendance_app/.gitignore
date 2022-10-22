@@ -6,3 +6,4 @@ pytestdebug.log
 .coverage
 /output
 .vscode
+/htmlcov

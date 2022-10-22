@@ -5,3 +5,5 @@ __pycache__
 pytestdebug.log
 .coverage
 /output
+.vscode
+/htmlcov
