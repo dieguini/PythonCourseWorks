@@ -122,3 +122,43 @@ When the user launches the app you need to present a menu of "template" question
   ``` bash
   $ python3 main.py 
   ```
+
+## Docker usage
+
+### Building
+
+Building process
+
+``` bash
+$ docker build <host>/attendance_app:<tag>
+```
+
+### Interactive output
+
+To interact with image just run the container without any _args_
+
+``` bash
+$ docker run -v "host_folder:/attendance_app/output" -it --rm <host>/attendance_app:<tag>
+```
+
+### Persiste output
+
+To get the output of 
+
+``` bash
+$ docker run -v "host_folder:/attendance_app/output" -it --rm <host>/attendance_app:<tag> [args]
+```
+
+Args:
+
+- **-o**: Option to process request { 1, 2 }
+- **-m**: Name of meeting to search for
+- **-sd**: Start date of meeting (YYYY-MM-DD format)
+- **-ed**: End date of meeting (YYYY-MM-DD format)
+
+### Example
+
+``` bash
+$ docker run -v "$(pwd)/output:/attendance_app/output" -it --rm <host>/attendance_app:<tag> -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
+```
+

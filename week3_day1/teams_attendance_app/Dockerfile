@@ -15,5 +15,3 @@ COPY ./attendace_reports/ /attendance_app/attendace_reports
 COPY ./Readme.md .
 
 ENTRYPOINT [ "python" , "./src/main.py" ]
-
-## TODO: Teams Attendance docker image definition, it must allow to run src.main.py
